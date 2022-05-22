@@ -14,8 +14,10 @@ import java.util.Objects;
 
 public class AddItemController {
     @FXML
+    public
     TextField itemTextField;
     @FXML
+    public
     TextField priceTextField;
 
     @FXML
