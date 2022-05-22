@@ -22,10 +22,13 @@ public class ItemsController {
     private String size;
 
     @FXML
+    public
     TableView<Item> shoppingTable;
     @FXML
+    public
     TableColumn<Item,String> itemColumn;
     @FXML
+    public
     TableColumn<Item,Integer> priceColumn;
 
     @FXML

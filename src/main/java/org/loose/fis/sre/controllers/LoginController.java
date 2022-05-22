@@ -18,10 +18,13 @@ import java.util.Objects;
 
 public class LoginController {
     @FXML
+    public
     TextField usernameTextField;
     @FXML
+    public
     PasswordField passwordField;
     @FXML
+    public
     Label label;
 
     @FXML
