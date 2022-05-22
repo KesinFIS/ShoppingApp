@@ -1,9 +1,8 @@
 package org.loose.fis.sre.model;
 
-import org.dizitart.no2.objects.Id;
+import java.util.Objects;
 
 public class User {
-    @Id
     private String username;
     private String password;
     private String role;
@@ -12,9 +11,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.role = role;
-    }
-
-    public User() {
     }
 
     public String getUsername() {
@@ -45,19 +41,25 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        return role != null ? role.equals(user.role) : user.role == null;
+        if(!user.username.equals(username)) return false;
+        if(!user.password.equals(password)) return false;
+        return user.role.equals(role);
     }
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        int result = 31*username.hashCode() + password.hashCode();
+        result = 31*result + role.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

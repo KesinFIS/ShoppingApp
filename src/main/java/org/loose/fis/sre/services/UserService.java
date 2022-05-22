@@ -1,61 +1,50 @@
 package org.loose.fis.sre.services;
 
-import org.dizitart.no2.Nitrite;
-import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+
 import org.loose.fis.sre.model.User;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Objects;
-
-import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Base64;
 
 public class UserService {
+    private static ArrayList<User> users = new ArrayList<>();
 
-    private static ObjectRepository<User> userRepository;
+    public static void loadUsers(){
+        try{
+            JSONParser jp = new JSONParser();
+            FileReader fr = new FileReader("src/main/resources/usernames.json");
+            Object obj = jp.parse(fr);
+            JSONArray ja = (JSONArray)obj;
 
-    public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("Shopping-App.db").toFile())
-                .openOrCreate("test", "test");
+            for(Object user:ja){
+                JSONObject o = (JSONObject)user;
 
-        userRepository = database.getRepository(User.class);
-    }
-
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
-        checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
-    }
-
-    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
-        for (User user : userRepository.find()) {
-            if (Objects.equals(username, user.getUsername()))
-                throw new UsernameAlreadyExistsException(username);
+                users.add(new User(o.get("username").toString(),o.get("password").toString(),o.get("role").toString()));
+            }
+        }catch(Exception e){
+            System.out.println(e);
         }
     }
 
-    private static String encodePassword(String salt, String password) {
-        MessageDigest md = getMessageDigest();
-        md.update(salt.getBytes(StandardCharsets.UTF_8));
-
-        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
-
-        // This is the way a password should be encoded when checking the credentials
-        return new String(hashedPassword, StandardCharsets.UTF_8)
-                .replace("\"", ""); //to be able to save in JSON format
-    }
-
-    private static MessageDigest getMessageDigest() {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("SHA-512");
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException("SHA-512 does not exist!");
+    public static String checkCredentials(String i, String p){
+        for(User u:users) {
+            if (u.getUsername().equals(i) && u.getPassword().equals(p))
+                return u.getRole();
         }
-        return md;
+        return "error";
     }
 
+    public static String encodePassword(String password){
+        String result = Base64.getEncoder().encodeToString(password.getBytes());
 
+        return result;
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
 }
