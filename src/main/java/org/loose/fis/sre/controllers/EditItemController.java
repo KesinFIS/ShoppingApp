@@ -15,8 +15,10 @@ import java.util.Objects;
 public class EditItemController {
 
     @FXML
+    public
     Label label;
     @FXML
+    public
     TextField textField;
 
     @FXML
