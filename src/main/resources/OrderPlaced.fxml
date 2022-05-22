@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="296.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OrderPlacedController">
+   <children>
+      <ImageView fitHeight="90.0" fitWidth="103.0" layoutX="282.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@order.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="36.0" layoutY="29.0" text="Your order has been placed" textFill="#563f96">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <TableView fx:id="tableView" layoutX="39.0" layoutY="68.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="itemColumn" prefWidth="86.33334732055664" text="Item" />
+          <TableColumn fx:id="priceColumn" prefWidth="62.99999237060547" text="Price" />
+            <TableColumn fx:id="sizeColumn" prefWidth="60.333343505859375" text="Size" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
