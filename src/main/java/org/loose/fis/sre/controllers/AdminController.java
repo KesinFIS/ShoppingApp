@@ -19,10 +19,13 @@ public class AdminController {
     private static Item selected;
 
     @FXML
+    public
     TableView<Item> itemsTable;
     @FXML
+    public
     TableColumn<Item,String> itemColumn;
     @FXML
+    public
     TableColumn<Item,Integer> priceColumn;
 
     @FXML
