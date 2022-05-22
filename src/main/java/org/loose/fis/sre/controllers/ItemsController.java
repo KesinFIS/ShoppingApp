@@ -1,6 +1,7 @@
 package org.loose.fis.sre.controllers;
 
 
+import com.sun.istack.internal.NotNull;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,8 +52,10 @@ public class ItemsController {
 
     @FXML
     public void addToCartButton(){
-       // size = SelectSizeController.getSize();
-        cartItems.add(new Item(shoppingTable.getSelectionModel().getSelectedItem().getName(),shoppingTable.getSelectionModel().getSelectedItem().getPrice(),size));
+        size = SelectSizeController.getSize();
+        @NotNull
+        Item newItem = new Item(shoppingTable.getSelectionModel().getSelectedItem().getName(),shoppingTable.getSelectionModel().getSelectedItem().getPrice(),size);
+        cartItems.add(newItem);
     }
 
     @FXML

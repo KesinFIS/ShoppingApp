@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.EditItemController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.AddItemController">
    <children>
       <Button layoutX="173.0" layoutY="323.0" mnemonicParsing="false" onAction="#addButton" text="Add" textFill="#563f96" />
       <Button layoutX="402.0" layoutY="323.0" mnemonicParsing="false" onAction="#backButton" text="Back" textFill="#563f96" />

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+
 import java.util.Objects;
 
 public class SelectSizeController {
@@ -21,7 +22,7 @@ public class SelectSizeController {
     }
 
     @FXML
-    ChoiceBox choiceBox;
+    public ChoiceBox choiceBox;
 
     @FXML
     public void initialize(){

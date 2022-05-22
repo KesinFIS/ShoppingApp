@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.EditItemController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.SelectSizeController">
    <children>
       <Label layoutX="167.0" layoutY="163.0" text="Size: " textFill="#563f96" />
       <ChoiceBox fx:id="choiceBox" layoutX="208.0" layoutY="159.0" prefWidth="150.0" style="-fx-background-color: #c7bee1; -fx-opacity: 0.5;" />
