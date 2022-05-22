@@ -1,36 +1,67 @@
 package org.loose.fis.sre.controllers;
 
+import org.loose.fis.sre.exceptions.InvalidAdmin;
+import org.loose.fis.sre.exceptions.InvalidUser;
+import org.loose.fis.sre.services.UserService;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
+import javafx.stage.Stage;
 import org.loose.fis.sre.services.UserService;
 
-public class RegistrationController {
+import java.awt.*;
+import java.util.Objects;
+
+public class LoginController {
+    @FXML
+    TextField usernameTextField;
+    @FXML
+    PasswordField passwordField;
+    @FXML
+    Label label;
 
     @FXML
-    private Text registrationMessage;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private ChoiceBox role;
-
-    @FXML
-    public void initialize() {
-        role.getItems().addAll("Client", "Admin");
+    public void initialize(){
+        label.setText("");
     }
 
     @FXML
-    public void handleRegisterAction() {
+    public void userLoginButton(){
         try {
-            UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue());
-            registrationMessage.setText("Account created successfully!");
-        } catch (UsernameAlreadyExistsException e) {
-            registrationMessage.setText(e.getMessage());
+            if (UserService.checkCredentials(usernameTextField.getText(), UserService.encodePassword(passwordField.getText())).equals("customer")) {
+                Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Items.fxml"));
+                primaryStage.setTitle("Shop Page");
+                primaryStage.setScene(new Scene(root,600,600));
+                primaryStage.show();
+            }
+            else {
+                 throw new InvalidUser();
+            }
+        }catch (Exception e){
+            label.setText("Invalid user!");
+        }
+    }
+
+    @FXML
+    public void adminLoginButton(){
+        try{
+            if(UserService.checkCredentials(usernameTextField.getText(), UserService.encodePassword(passwordField.getText().toString())).equals("admin")){
+                Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StoreManagement.fxml"));
+                primaryStage.setTitle("Administration Page");
+                primaryStage.setScene(new Scene(root,600,600));
+                primaryStage.show();
+            }
+            else{
+                throw new InvalidAdmin();
+            }
+        }catch (Exception e){
+            label.setText("Invalid user!");
         }
     }
 }
