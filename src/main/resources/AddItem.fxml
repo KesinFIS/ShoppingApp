@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddItemController">
+   <children>
+      <Button layoutX="173.0" layoutY="323.0" mnemonicParsing="false" onAction="#addButton" text="Add" textFill="#563f96" />
+      <Button layoutX="402.0" layoutY="323.0" mnemonicParsing="false" onAction="#backButton" text="Back" textFill="#563f96" />
+      <TextField fx:id="itemTextField" layoutX="225.0" layoutY="149.0" style="-fx-background-color: #c7bee1; -fx-opacity: 0.5;" />
+      <TextField fx:id="priceTextField" layoutX="226.0" layoutY="200.0" style="-fx-background-color: #c7bee1; -fx-opacity: 0.5;" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="131.0" prefHeight="17.0" prefWidth="41.0" text="Item" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="182.0" prefHeight="17.0" prefWidth="41.0" text="Price" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="64.0" prefHeight="28.0" prefWidth="155.0" text="Add New Items" textFill="#563f96">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label layoutX="79.0" layoutY="83.0" opacity="0.0" text="Label" />
+   </children>
+</AnchorPane>
