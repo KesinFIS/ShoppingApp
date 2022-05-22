@@ -14,6 +14,7 @@ import org.loose.fis.sre.model.Item;
 import org.loose.fis.sre.services.ItemsService;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ItemsController {
     private static ArrayList<Item> cartItems = new ArrayList<>();
@@ -39,7 +40,7 @@ public class ItemsController {
     public void selectSizeButton(){
         try{
             Stage primaryStage = (Stage)shoppingTable.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("SelectSize.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("SelectSize.fxml")));
             primaryStage.setTitle("Select Size");
             primaryStage.setScene(new Scene(root,600,600));
             primaryStage.show();
@@ -58,7 +59,7 @@ public class ItemsController {
     public void placeOrderButton() {
         try {
             Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("OrderPlaced.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("OrderPlaced.fxml")));
             primaryStage.setTitle("Order Placed");
             primaryStage.setScene(new Scene(root,400,400));
             primaryStage.show();

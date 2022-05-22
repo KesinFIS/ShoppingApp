@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class SelectSizeController {
     private static String size = "36";
 
@@ -31,7 +33,7 @@ public class SelectSizeController {
     public void backButton(){
         try{
             Stage primaryStage = (Stage)choiceBox.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Items.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Items.fxml")));
             primaryStage.setTitle("Shop Page");
             primaryStage.setScene(new Scene(root,600,600));
             primaryStage.show();

@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.loose.fis.sre.services.ItemsService;
 
+import java.util.Objects;
+
 public class EditItemController {
     @FXML
     Label label;
@@ -24,7 +26,7 @@ public class EditItemController {
     public void backButton(){
         try{
             Stage primaryStage = (Stage)label.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StoreManagement.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("StoreManagement.fxml")));
             primaryStage.setTitle("Administration Page");
             primaryStage.setScene(new Scene(root,600,600));
             primaryStage.show();
