@@ -34,7 +34,7 @@ public class LoginController {
         try {
             if (UserService.checkCredentials(usernameTextField.getText(), UserService.encodePassword(passwordField.getText())).equals("customer")) {
                 Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Items.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Items.fxml")));
                 primaryStage.setTitle("Shop Page");
                 primaryStage.setScene(new Scene(root,600,600));
                 primaryStage.show();
@@ -52,7 +52,7 @@ public class LoginController {
         try{
             if(UserService.checkCredentials(usernameTextField.getText(), UserService.encodePassword(passwordField.getText().toString())).equals("admin")){
                 Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StoreManagement.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("StoreManagement.fxml")));
                 primaryStage.setTitle("Administration Page");
                 primaryStage.setScene(new Scene(root,600,600));
                 primaryStage.show();

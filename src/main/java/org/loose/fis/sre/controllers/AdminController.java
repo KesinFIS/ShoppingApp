@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import org.loose.fis.sre.model.Item;
 import org.loose.fis.sre.services.ItemsService;
 
+import java.util.Objects;
+
 public class AdminController {
     private static Item selected;
 
@@ -49,7 +51,7 @@ public class AdminController {
     public void addButton(){
         try{
             Stage primaryStage = (Stage)itemsTable.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddItem.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("AddItem.fxml")));
             primaryStage.setTitle("Add Item");
             primaryStage.setScene(new Scene(root,600,600));
             primaryStage.show();

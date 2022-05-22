@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class AddItemController {
     @FXML
@@ -20,7 +22,7 @@ public class AddItemController {
     public void backButton(){
         try{
             Stage primaryStage = (Stage)itemTextField.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("StoreManagement.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("StoreManagement.fxml")));
             primaryStage.setTitle("Admin Page");
             primaryStage.setScene(new Scene(root,600,600));
             primaryStage.show();

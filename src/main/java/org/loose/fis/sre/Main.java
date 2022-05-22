@@ -5,7 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.loose.fis.sre.services.ItemsService;
 import org.loose.fis.sre.services.UserService;
+
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -15,10 +18,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //ItemsService.setPath("src/main/resources/shoppingItems.json");
+        ItemsService.setPath("src/main/resources/shoppingItems.json");
         UserService.loadUsers();
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("Login.fxml")));
         primaryStage.setTitle("Login");
         primaryStage.setScene(new Scene(root,600,600));
         primaryStage.show();
